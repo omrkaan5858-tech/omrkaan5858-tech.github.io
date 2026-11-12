@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Çınar OS — Türkçe, özgür işletim sistemi</title>
+<meta name="description" content="Çınar OS: Debian tabanlı, KDE Plasma masaüstülü, tamamen Türkçe ve ücretsiz işletim sistemi.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<meta property="og:title" content="Çınar OS">
+<meta property="og:description" content="Türkçe, özgür ve bozulmayan işletim sistemi.">
+<meta property="og:image" content="arkaplan-kucuk.jpg">
+<style>
+:root{
+  --koyu:#0f2414; --koyu2:#163420; --yesil:#4caf50; --acik:#7cc45a; --gok:#255c7a;
+  --krem:#fff6dc; --yazi:#e8f2e6; --soluk:#a9c2a6; --turuncu:#e07a2e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,"Noto Sans",Ubuntu,sans-serif;background:var(--koyu);color:var(--yazi);line-height:1.6}
+a{color:var(--acik)}
+img{max-width:100%}
+
+/* Üst çubuk */
+.ust{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 5vw;background:rgba(15,36,20,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.marka{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-size:1.15rem}
+.marka img{width:34px;height:34px}
+.ust nav a{color:#fff;text-decoration:none;margin-left:22px;opacity:.85;font-size:.95rem}
+.ust nav a:hover{opacity:1}
+@media (max-width:700px){.ust nav a:not(.nav-indir){display:none}}
+
+/* Giriş */
+.giris{min-height:100vh;display:flex;align-items:center;padding:110px 5vw 60px;
+  background:linear-gradient(90deg,rgba(15,36,20,.82) 0%,rgba(15,36,20,.55) 45%,rgba(15,36,20,0) 75%),
+             url("arkaplan.jpg") center/cover no-repeat}
+@media (max-width:900px){.giris{background:linear-gradient(rgba(15,36,20,.75),rgba(15,36,20,.88)),url("arkaplan-kucuk.jpg") 70% center/cover}}
+.giris-ic{max-width:620px}
+.rozet{display:inline-block;padding:4px 12px;border-radius:99px;background:rgba(124,196,90,.18);border:1px solid rgba(124,196,90,.5);
+  color:var(--acik);font-size:.85rem;font-weight:600;letter-spacing:.3px}
+h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.05;margin:18px 0 14px;color:#fff;letter-spacing:-1px}
+h1 span{color:var(--acik)}
+.alt{font-size:1.2rem;color:#dfeadd;margin:0 0 30px}
+.dugmeler{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.indir{display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border-radius:14px;background:var(--yesil);color:#fff;
+  text-decoration:none;font-weight:700;font-size:1.15rem;box-shadow:0 8px 24px rgba(76,175,80,.35);transition:transform .15s,background .15s}
+.indir:hover{background:#43a047;transform:translateY(-2px)}
+.indir svg{width:24px;height:24px}
+.ikincil{padding:15px 22px;border-radius:14px;border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;font-weight:600}
+.ikincil:hover{background:rgba(255,255,255,.08)}
+.bilgi{margin-top:14px;font-size:.9rem;color:var(--soluk)}
+
+/* Bölümler */
+section{padding:80px 5vw}
+.kap{max-width:1100px;margin:0 auto}
+h2{font-size:clamp(1.8rem,3.5vw,2.4rem);margin:0 0 10px;color:#fff}
+.bolum-alt{color:var(--soluk);margin:0 0 40px;max-width:640px}
+.izgara{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.kart{background:var(--koyu2);border:1px solid rgba(124,196,90,.14);border-radius:16px;padding:24px}
+.kart .simge{font-size:1.8rem;line-height:1}
+.kart h3{margin:12px 0 6px;color:#fff;font-size:1.1rem}
+.kart p{margin:0;color:var(--soluk);font-size:.95rem}
+
+.oyun{background:linear-gradient(135deg,#1b3a24,#0f2414);}
+.oyun-ic{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+@media (max-width:850px){.oyun-ic{grid-template-columns:1fr}}
+.oyun ul{padding-left:20px;color:var(--soluk)}
+.oyun li{margin:6px 0}
+.sayi{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.sayi div{background:rgba(0,0,0,.25);border-radius:14px;padding:18px;text-align:center}
+.sayi b{display:block;font-size:2rem;color:var(--acik)}
+.sayi span{color:var(--soluk);font-size:.9rem}
+
+/* Kurulum */
+.adimlar{counter-reset:a;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.adim{counter-increment:a;background:var(--koyu2);border-radius:16px;padding:24px;position:relative}
+.adim::before{content:counter(a);display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;
+  background:var(--yesil);color:#fff;font-weight:700;margin-bottom:12px}
+.adim h3{margin:0 0 6px;color:#fff;font-size:1.05rem}
+.adim p{margin:0;color:var(--soluk);font-size:.95rem}
+
+/* Doğrulama */
+.dogrula{background:var(--koyu2);border-radius:16px;padding:24px;margin-top:28px}
+.hash{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.hash code{flex:1;min-width:260px;background:#0a1a0e;padding:12px 14px;border-radius:10px;font-size:.85rem;word-break:break-all;color:#cfe8c8}
+.kopyala{padding:10px 16px;border-radius:10px;border:0;background:var(--yesil);color:#fff;font-weight:600;cursor:pointer}
+.komut{display:block;margin-top:10px;background:#0a1a0e;padding:12px 14px;border-radius:10px;font-size:.85rem;color:#cfe8c8;overflow-x:auto}
+
+/* Gereksinim */
+table{width:100%;border-collapse:collapse;background:var(--koyu2);border-radius:16px;overflow:hidden}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
+th{color:#fff;background:rgba(124,196,90,.1)}
+td{color:var(--soluk)}
+
+footer{padding:40px 5vw;text-align:center;color:var(--soluk);font-size:.9rem;border-top:1px solid rgba(255,255,255,.06)}
+footer img{width:42px;opacity:.9}
+</style>
+</head>
+<body>
+
+<header class="ust">
+  <a class="marka" href="#"><img src="logo.svg" alt="">Çınar OS</a>
+  <nav>
+    <a href="#ozellikler">Özellikler</a>
+    <a href="#oyun">Oyun</a>
+    <a href="#kurulum">Kurulum</a>
+    <a class="nav-indir" href="#indir">İndir</a>
+  </nav>
+</header>
+
+<main>
+<section class="giris" id="indir">
+  <div class="giris-ic">
+    <span class="rozet" id="surumRozet">Çınar OS 1.1 “Fidan”</span>
+    <h1>Kökleri sağlam,<br><span>tamamen Türkçe.</span></h1>
+    <p class="alt">Debian tabanlı, KDE Plasma masaüstülü, ücretsiz ve özgür bir işletim sistemi. Okul, ev ve geliştiriciler için.</p>
+    <div class="dugmeler">
+      <a class="indir" id="indirDugme" href="https://github.com/omrkaan5858-tech/omrkaan5858-tech.github.io/releases/latest">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        <span id="indirYazi">Çınar OS'u İndir</span>
+      </a>
+      <a class="ikincil" href="#kurulum">Nasıl kurulur?</a>
+    </div>
+    <p class="bilgi" id="indirBilgi">64 bit ISO · ücretsiz · GPL v3</p>
+  </div>
+</section>
+
+<section id="ozellikler">
+  <div class="kap">
+    <h2>Neden Çınar?</h2>
+    <p class="bolum-alt">Bozulmayan bir sistem, kendi araçları ve baştan sona Türkçe bir arayüz.</p>
+    <div class="izgara">
+      <div class="kart"><div class="simge">🛡️</div><h3>Bozulmayan sistem</h3><p>İki bölümlü (A/B) yapı. Bir güncelleme sorun çıkarırsa sistem kendiliğinden önceki haline döner.</p></div>
+      <div class="kart"><div class="simge">⏳</div><h3>Zaman Makinesi</h3><p>Dosyaların düzenli olarak yedeklenir. Yanlışlıkla sildiğin bir şeyi geri getirebilirsin.</p></div>
+      <div class="kart"><div class="simge">🌳</div><h3>Çınar Merkezi</h3><p>Uygulamalar, güncellemeler, sürücüler, yedekler ve Okul Modu tek bir yerde.</p></div>
+      <div class="kart"><div class="simge">🏫</div><h3>Okul Modu</h3><p>Öğretmen, sınıftaki bilgisayarları yerel ağ üzerinden görebilir ve yönetebilir (Veyon).</p></div>
+      <div class="kart"><div class="simge">🔒</div><h3>Güvenli</h3><p>Disk şifreleme varsayılan olarak açık, güvenlik duvarı hazır. Secure Boot açıkken de çalışır.</p></div>
+      <div class="kart"><div class="simge">💻</div><h3>Program Çalıştırıcı</h3><p>.cpc dosyalarıyla Python, C, C++, C#, Java, JavaScript, Rust ve daha fazlasını tek tıkla çalıştır.</p></div>
+      <div class="kart"><div class="simge">🇹🇷</div><h3>Tamamen Türkçe</h3><p>Arayüz, kurulum ve araçlar Türkçe. Türkçe Q ve F klavye desteği hazır.</p></div>
+      <div class="kart"><div class="simge">📦</div><h3>Binlerce uygulama</h3><p>Flathub ilk açılışta hazır. İstediğin programı Çınar Merkezi'nden tek tıkla kur.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="oyun" id="oyun">
+  <div class="kap oyun-ic">
+    <div>
+      <h2>Çınarların Savaşı</h2>
+      <p class="bolum-alt">Çınar OS'la birlikte gelen, 20'ye 20 çok oyunculu savaş oyunu. Menüden <b>Oyunlar → Çınarların Savaşı</b>.</p>
+      <ul>
+        <li>Avrupa'dan Akdeniz'e, Büyük Çöl'den tropiklere uzanan kesintisiz bir dünya</li>
+        <li>Her bölgenin dev çınarını ele geçir, düşmanınkini yık</li>
+        <li>Gündüz-gece döngüsü ve bölgeye göre değişen hava</li>
+        <li>Aynı ağdaki arkadaşlarınla ya da internet üzerinden oyna</li>
+      </ul>
+    </div>
+    <div class="sayi">
+      <div><b>20v20</b><span>oyuncu</span></div>
+      <div><b>100×250</b><span>km harita</span></div>
+      <div><b>5</b><span>silah</span></div>
+      <div><b>48 KB</b><span>oyun boyutu</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="kurulum">
+  <div class="kap">
+    <h2>Nasıl kurulur?</h2>
+    <p class="bolum-alt">Bir USB bellek ve birkaç dakika yeterli. Kurmadan önce USB'den canlı olarak deneyebilirsin.</p>
+    <div class="adimlar">
+      <div class="adim"><h3>ISO'yu indir</h3><p>Yukarıdaki yeşil <b>İndir</b> düğmesine bas. Dosya yaklaşık 1,7 GB.</p></div>
+      <div class="adim"><h3>USB'ye yaz</h3><p><a href="https://rufus.ie/tr/" target="_blank" rel="noopener">Rufus</a>'u aç, en az 4 GB'lık USB belleği ve ISO'yu seç, <b>BAŞLAT</b>'a bas.</p></div>
+      <div class="adim"><h3>USB'den aç</h3><p>Bilgisayarı yeniden başlat, açılış menüsünden USB'yi seç (genellikle F12, F11 ya da Esc).</p></div>
+      <div class="adim"><h3>Dene ya da kur</h3><p>Çınar şifre sormadan açılır. Beğenirsen masaüstündeki <b>Çınar OS'u Kur</b> simgesine bas.</p></div>
+    </div>
+
+    <div class="dogrula">
+      <h3 style="margin:0;color:#fff">Dosya sağlam mı? (isteğe bağlı)</h3>
+      <p style="margin:6px 0 0;color:var(--soluk)">İndirdiğin ISO'nun SHA256 parmak izi bununla aynı olmalı:</p>
+      <div class="hash"><code id="sha">yükleniyor…</code><button class="kopyala" id="kopyalaDugme" type="button">Kopyala</button></div>
+      <p style="margin:14px 0 0;color:var(--soluk)">Windows'ta İndirilenler klasöründe komut istemini açıp şunu yaz:</p>
+      <code class="komut" id="komut">certutil -hashfile CinarOS-1.1-Fidan-64bit.iso SHA256</code>
+    </div>
+  </div>
+</section>
+
+<section id="gereksinim" style="padding-top:0">
+  <div class="kap">
+    <h2>Sistem gereksinimleri</h2>
+    <p class="bolum-alt">Çınar, son on yılda çıkmış çoğu bilgisayarda çalışır.</p>
+    <table>
+      <tr><th></th><th>En az</th><th>Önerilen</th></tr>
+      <tr><td>İşlemci</td><td>64 bit, 2 çekirdek</td><td>64 bit, 4 çekirdek</td></tr>
+      <tr><td>Bellek (RAM)</td><td>4 GB</td><td>8 GB</td></tr>
+      <tr><td>Disk</td><td>25 GB</td><td>64 GB ve üstü (SSD)</td></tr>
+      <tr><td>Açılış</td><td colspan="2">UEFI (Secure Boot açık da olur) ya da eski BIOS</td></tr>
+    </table>
+  </div>
+</section>
+</main>
+
+<footer>
+  <img src="logo.svg" alt=""><br>
+  Çınar OS özgür bir yazılımdır ve <a href="https://github.com/omrkaan5858-tech/omrkaan5858-tech.github.io/blob/main/LICENSE">GNU Genel Kamu Lisansı v3.0</a> ile dağıtılır.<br>
+  Debian ve KDE Plasma üzerine kurulmuştur. ·
+  <a href="https://github.com/omrkaan5858-tech/omrkaan5858-tech.github.io/releases">Tüm sürümler</a>
+</footer>
+
+<script>
+(function(){
+  var DEPO = "omrkaan5858-tech/omrkaan5858-tech.github.io";
+  var sha = document.getElementById("sha");
+  var varsayilanSha = "82e946e6fd35586b02ea3fd0be34f6a9ab66fd5bd5245304c9e2619a39230956";
+
+  function gb(b){ return (b/1073741824).toFixed(2).replace(".", ",") + " GB"; }
+
+  document.getElementById("kopyalaDugme").addEventListener("click", function(){
+    var t = sha.textContent.trim(), d = this;
+    function tamam(){ d.textContent = "Kopyalandı ✓"; setTimeout(function(){ d.textContent = "Kopyala"; }, 1800); }
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(tamam, function(){});
+    else { var r = document.createRange(); r.selectNode(sha); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); tamam(); }
+  });
+
+  fetch("https://api.github.com/repos/" + DEPO + "/releases/latest")
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(s){
+      var iso = (s.assets || []).filter(function(a){ return /\.iso$/i.test(a.name); })[0];
+      if (!iso) throw 0;
+      document.getElementById("indirDugme").href = iso.browser_download_url;
+      document.getElementById("indirYazi").textContent = (s.name || s.tag_name) + " İndir";
+      document.getElementById("surumRozet").textContent = s.name || s.tag_name;
+      var tarih = new Date(s.published_at).toLocaleDateString("tr-TR", {day:"numeric", month:"long", year:"numeric"});
+      document.getElementById("indirBilgi").textContent = "64 bit ISO · " + gb(iso.size) + " · " + tarih + " · ücretsiz · GPL v3";
+      var h = (iso.digest && iso.digest.indexOf("sha256:") === 0) ? iso.digest.slice(7) : ((s.body || "").match(/[a-f0-9]{64}/i) || [""])[0];
+      sha.textContent = h || "Sürüm sayfasında yazıyor";
+      document.getElementById("komut").textContent = "certutil -hashfile " + iso.name + " SHA256";
+    })
+    .catch(function(){ sha.textContent = varsayilanSha; });
+})();
+</script>
+</body>
+</html>

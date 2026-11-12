@@ -1,0 +1,25 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Date: Thu, 12 Nov 2026 18:05:17 +0000
+Label: Cinar OS
+Origin: Cinar OS
+MD5Sum:
+ 04c6ca1380eeb63c3371a32bcf16bd86             1411 Packages
+ 5433e9f154955f83728ff87c88abf9fa              828 Packages.gz
+SHA1:
+ 251214649c8e867c190ac5c6a3b1c2b9b1ae09ba             1411 Packages
+ ccef6e1a9299463c1fd02878f63361364bc8d04e              828 Packages.gz
+SHA256:
+ 383c378c6f17a70aa9bb0880269ce10e48ade21c5b2051b518c125bbffff9568             1411 Packages
+ 82a20eebcb8e34550fcbae2c1677c4b9edb22b30c77c6bce5daa514fbbd8ffa3              828 Packages.gz
+SHA512:
+ 82265ba5627880ecacf5df80b493efb24f9135733ccb35ffffda6f015c6fcf440d1b2146667f2b8ab14338191a8a7cf852ce01b71ef91fa5d14268ea84752d60             1411 Packages
+ 042073280107b68e56072dd63e988b5807f2d6542353402f01d908cee8432920fbb8f3199fcdeb370fa93624041aec7b573b556f2da8914d0daa4f46ba7bcd1e              828 Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQSz2uoVogBDPsK0v6FB+Oi52XqDPAUCavX/3gAKCRBB+Oi52XqD
+PHu+AP4ifbLSDr1tv0eygMyGtN8gaQuzjdHwk4PpiByCrpmqJwD/cCwOWNRlAgKO
+rs0zZvvKwXQS6NADvKAO+JQ54BewHw0=
+=QGpy
+-----END PGP SIGNATURE-----

@@ -1,0 +1,33 @@
+Package: cinar-temel
+Version: 1.3.0
+Architecture: all
+Maintainer: Cinar OS <cinar@localhost>
+Depends: python3-pyqt6, python3-pyqt6.qsci, flatpak, ufw, cryptsetup, squashfs-tools, rsync, grub-common, curl, konsole, gcc, g++, libc6-dev, default-jdk-headless, nodejs, mono-mcs, mono-runtime, wabt, rustc, nasm, qemu-system-x86, qemu-system-gui, godot3, cinarlarin-savasi
+Filename: ./cinar-temel_1.3.0_all.deb
+Size: 617184
+MD5sum: 2fa83ff32a1d9679fa90ad65bd78dce2
+SHA1: a438d84273a83007acd21f025a35c9d7075b7326
+SHA256: 1b92525262917b08dce13f301aba077049f377ecb8ca254f2627379eda8d992a
+Section: admin
+Priority: optional
+Description: Cinar OS temel bilesenleri
+ Cinar Merkezi, kurulum programi, degismez sistem araclari (cinar-sistem),
+ Zaman Makinesi, okul modu, tema, simgeler ve ayarlar.
+
+Package: cinarlarin-savasi
+Version: 1.3.0
+Architecture: all
+Maintainer: Cinar OS <cinar@localhost>
+Depends: godot3, fonts-noto-core, ufw
+Filename: ./cinarlarin-savasi_1.3.0_all.deb
+Size: 48408
+MD5sum: 7b81d5f62a3257c7a283ffc0e91cea6d
+SHA1: 09c9fbbf3246d60b2c57d7be5502b046e3c2d364
+SHA256: 4d963e42ed8b698b1dbd1a5378f64cbd7faec5a5fcca4f82fe7a55b674b75253
+Section: games
+Priority: optional
+Description: Cinarlarin Savasi - Cinar OS'un kendi savas oyunu
+ Uc bolgeli (Avrupa, Buyuk Col, Tropikal) 100x250 km'lik acik dunyada,
+ iki takimin bolge cinarlari icin savastigi 20'ye 20 cok oyunculu oyun.
+ Godot oyun motoruyla calisir.
+
